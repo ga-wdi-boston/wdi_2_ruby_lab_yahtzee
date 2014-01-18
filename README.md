@@ -1,16 +1,19 @@
 # Yahtzee!
 
-Yahtzee is a simple dice game. Each round, each player rolls five dice (regular six-sided ones). Players may choose to reroll some or all of their dice up to two times. The player then declares a category, such as ones, twos, sixes, pair, two pairs, etc. The roll is scored based on the rules for that category.
+Yahtzee is a simple dice game that involves rolling five ordinary 6-sided dice. For each roll the player declares a category, such as ones, twos, sixes, pair, two pairs, etc. The roll is scored based on the rules for that category. Once chosen, a category cannot be chosen again for the rest of the "round", adding some strategy to the game.
 
 ## Objective
 
-Your goal in this lab is to use test-driven development and pair programming to write a `YahtzeeRoll` class, representing a single Yahtzee roll.
+Your goal in this lab is to use test-driven development and pair programming to write a `YahtzeeRoll` class, representing a single roll of five 6-sided dice that can be scored in a given category. **Your code will not perform the actual dice roll, nor will it keep track of multiple rolls.** We are not simulating the entire game of Yahtzee.
 
-* The class should be initialized with values for the dice. If the passed data is not a valid roll of five six-sided dice, an error should be raised.
+`YahtzeeRoll` should be initialized with values for the dice. It should check the roll for validity, and if it is not valid, raise an error. You should be able to call a scoring method on the `YahtzeeRoll` object that accepts a category and returns the score of the roll according to the rules of that category. If the category passed to the scoring method is not applicable to the roll (e.g. "pair" with a roll that has no pairs), it should be scored as 0 points.
 
-* The class should have a scoring method that, given a category, returns the score of the roll according to the rules of that category.
+```
+> roll = YahtzeeRoll.new(5, 4, 6, 2, 4)
+> roll.score(:pair) # should return 8
+```
 
-If the category passed to the scoring method is not applicable to the roll (e.g. "pair" with a roll that has no pairs), it should be scored as 0 points.
+The above code is merely an example &ndash; the details of the implementation are entirely up to you.
 
 ## Scoring Categories
 
@@ -36,4 +39,4 @@ If the category passed to the scoring method is not applicable to the roll (e.g.
 
 ## Bonus Challenge
 
-Create another `YahtzeeRoll` method that accepts no parameters and returns the category that should be used to get the maximum possible score for the roll.
+Create another `YahtzeeRoll` method that accepts no parameters and returns the category that should be used to get the maximum possible score for the roll. Assume **Chance** cannot be used, since otherwise it would always be the best choice short of a Yahtzee.
